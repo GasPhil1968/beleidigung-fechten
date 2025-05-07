@@ -1,0 +1,229 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2575.6">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!DOCTYPE html&gt;</p>
+<p class="p1">&lt;html lang="de"&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta charset="UTF-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;title&gt;Beleidigungsfechten&lt;/title&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;style&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>body { font-family: Arial; margin: 0; background: #222; color: #eee; display: flex; flex-direction: column; height: 100vh; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>h1 { color: #ffcc00; margin: 0; padding: 10px; background: #111; position: sticky; top: 0; z-index: 1000; text-align: center; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>#status { margin: 0; padding: 10px; background: #111; position: sticky; top: 50px; z-index: 999; font-weight: bold; text-align: center; transition: background-color 0.5s ease, transform 0.3s ease; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.main-container { flex: 1; display: flex; overflow: hidden; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>#gameLog { flex: 2; padding: 10px; font-size: 1.2em; overflow-y: auto; max-height: 100%; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>#insultButtons {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>flex: 1;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background: #1b1b1b;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding: 10px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>overflow-y: auto;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>height: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-left: 1px solid #444;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>flex-direction: column;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>align-items: center;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>gap: 10px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>#insultButtons button { width: 100%; max-width: 300px; margin: 5px 0; padding: 10px; cursor: pointer; border: none; border-radius: 5px; transition: transform 0.2s ease, background-color 0.2s ease; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>#insultButtons button:hover { transform: scale(1.05); }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>#insultButtons button:active { transform: scale(0.95); }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.response-mode button { background-color: #0055aa; color: #fff; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.response-mode button:hover { background-color: #0077cc; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.insult-mode button { background-color: #444; color: #eee; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.insult-mode button:hover { background-color: #666; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.message p { margin: 6px 0; padding: 8px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.3); }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.message p strong { color: #ffd700; display: block; background: #333; padding: 4px; border-radius: 5px; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.message p em { color: #87ceeb; display: block; background: #2a2a2a; padding: 4px; border-radius: 5px; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/style&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p1">&lt;body&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;h1&gt;Beleidigungsfechten&lt;/h1&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div id="status"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="main-container"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="message" id="gameLog"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="insultButtons"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div style="text-align:center; padding:10px;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;button onclick="location.reload()" style="padding:10px 20px; font-size:16px; background:#008800; color:white; border:none; border-radius:5px; cursor:pointer;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>🔁 Neues Spiel starten</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>function animateScore(who) {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const status = document.getElementById('status');</p>
+<p class="p1"><span class="Apple-converted-space">      </span>status.style.transform = 'scale(1.05)';</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (who === 'player') {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>status.style.backgroundColor = '#228822';</p>
+<p class="p1"><span class="Apple-converted-space">      </span>} else if (who === 'computer') {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>status.style.backgroundColor = '#aa2222';</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p1"><span class="Apple-converted-space">      </span>setTimeout(() =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>updateStatus();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>status.style.transform = 'scale(1)';</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}, 800);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>const insults = [</p>
+<p class="p1"><span class="Apple-converted-space">  </span>["Deine Mutter ist so fett, sie hat ihre eigene Postleitzahl!", "Dann bekommt sie wenigstens mehr Fanpost als du!"],</p>
+<p class="p1"><span class="Apple-converted-space">  </span>["Deine Mutter ist so fett, wenn sie ins Meer springt, steigt der Meeresspiegel!", "Und trotzdem macht sie mehr Wellen als du!"],</p>
+<p class="p1"><span class="Apple-converted-space">  </span>["Deine Mutter ist so fett, sie braucht ein GPS, um sich umzudrehen!", "Und du brauchst eins, um einen Witz zu finden!"],</p>
+<p class="p1"><span class="Apple-converted-space">  </span>["Deine Mutter ist so fett, dass selbst Google Maps sie nicht ganz anzeigen kann!", "Immerhin bin ich leicht zu finden!"],</p>
+<p class="p1"><span class="Apple-converted-space">  </span>["Deine Mutter ist so fett, sie verursacht eine Sonnenfinsternis, wenn sie spazieren geht!", "Dann bring lieber deine Sonnenbrille mit!"],</p>
+<p class="p1"><span class="Apple-converted-space">  </span>["Deine Mutter ist so fett, sie isst beim All-you-can-eat das Gebäude mit!", "Und du kriegst nicht mal eine Einladung."],</p>
+<p class="p1"><span class="Apple-converted-space">  </span>["Deine Mutter ist so fett, sie hat ein eigenes Gravitationsfeld!", "Deshalb kreist du wohl ständig um sie herum!"],</p>
+<p class="p1"><span class="Apple-converted-space">  </span>["Deine Mutter ist so fett, sie verursacht Stau beim Rückwärtsgehen!", "Dann bleib du lieber stehen!"],</p>
+<p class="p1"><span class="Apple-converted-space">  </span>["Deine Mutter ist so fett, sie benutzt ein Sofa als Flip-Flop!", "Und trotzdem tritt sie dich mit Stil."],</p>
+<p class="p1"><span class="Apple-converted-space">  </span>["Deine Mutter ist so fett, sie macht dem Walross Konkurrenz!", "Das Walross hat sich schon bedankt!"],</p>
+<p class="p1"><span class="Apple-converted-space">  </span>["Deine Mutter ist so fett, wenn sie springt, denkt man, es sei ein Erdbeben!", "Dann wackel nicht so bei jeder Niederlage!"],</p>
+<p class="p1"><span class="Apple-converted-space">  </span>["Deine Mutter ist so fett, sie kann sich nicht im Spiegel sehen – es gibt keinen, der groß genug ist!", "Dein Ego passt auch in keinen Spiegel."],</p>
+<p class="p1"><span class="Apple-converted-space">  </span>["Deine Mutter ist so fett, sie hat ihren eigenen Parkplatz im Buffet-Restaurant!", "Immerhin braucht sie keinen für dich."],</p>
+<p class="p1"><span class="Apple-converted-space">  </span>["Deine Mutter ist so fett, sie wurde für eine Insel gehalten!", "Dann brauchst du wohl eine Schatzkarte!"],</p>
+<p class="p1"><span class="Apple-converted-space">  </span>["Deine Mutter ist so fett, sie braucht zwei Flugtickets – für einen Sitz!", "Und du fliegst trotzdem auf sie!"],</p>
+<p class="p1"><span class="Apple-converted-space">  </span>["Deine Mutter ist so fett, sie schmilzt in der Sonne nicht – sie blockiert sie!", "Zum Glück blendest du niemanden."],</p>
+<p class="p1"><span class="Apple-converted-space">  </span>["Deine Mutter ist so fett, sie hat beim Limbo das Tor eingerissen!", "Dann bleib lieber aufrecht!"],</p>
+<p class="p1"><span class="Apple-converted-space">  </span>["Deine Mutter ist so fett, sie wird in Megatonnen gewogen!", "Und du in Gramm Mut."],</p>
+<p class="p1"><span class="Apple-converted-space">  </span>["Deine Mutter ist so fett, wenn sie lacht, bebt der Planet!", "Dann bring sie lieber nicht zum Weinen."],</p>
+<p class="p1"><span class="Apple-converted-space">  </span>["Deine Mutter ist so fett, ihr Schatten hat einen eigenen Schatten!", "Dann bleib lieber im Licht."],</p>
+<p class="p1">];</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>let playerPoints = 0;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>let computerPoints = 0;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>let playerTurn = true;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>let currentInsultIndex = null;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>let awaitingPlayerResponse = false;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>let round = 1;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>const log = document.getElementById('gameLog');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const buttons = document.getElementById('insultButtons');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const status = document.getElementById('status');</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function updateStatus() {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>status.innerHTML = `${playerTurn ? '🧑 Du bist dran!' : '🤖 Der Computer ist dran!'}&lt;br&gt;Runde: ${round} | Du: ${playerPoints} Punkte | Computer: ${computerPoints} Punkte`;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function showMessage(msg) {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>log.innerHTML += `&lt;p&gt;${msg}&lt;/p&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>log.scrollTop = log.scrollHeight;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function checkWin() {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (playerPoints &gt;= 3) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>showMessage("&lt;strong&gt;Du hast gewonnen!&lt;/strong&gt;");</p>
+<p class="p1"><span class="Apple-converted-space">        </span>buttons.innerHTML = "";</p>
+<p class="p1"><span class="Apple-converted-space">        </span>return true;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (computerPoints &gt;= 3) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>showMessage("&lt;strong&gt;Der Computer hat gewonnen!&lt;/strong&gt;");</p>
+<p class="p1"><span class="Apple-converted-space">        </span>buttons.innerHTML = "";</p>
+<p class="p1"><span class="Apple-converted-space">        </span>return true;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p1"><span class="Apple-converted-space">      </span>return false;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function nextRound() {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (playerPoints &lt; 3 &amp;&amp; computerPoints &lt; 3) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>round++;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>updateStatus();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if (playerTurn) {</p>
+<p class="p1"><span class="Apple-converted-space">          </span>showMessage("Du bist dran. Wähle eine Beleidigung:");</p>
+<p class="p1"><span class="Apple-converted-space">          </span>showInsultOptions();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">          </span>showMessage("Computer ist dran mit einer Beleidigung...");</p>
+<p class="p1"><span class="Apple-converted-space">          </span>setTimeout(computerInsults, 1000);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function computerResponds() {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const correct = Math.random() &lt; 0.6;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>let response;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (correct) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>response = insults[currentInsultIndex][1];</p>
+<p class="p1"><span class="Apple-converted-space">        </span>showMessage(`&lt;em&gt;Computer antwortet:&lt;/em&gt; ${response}`);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>computerPoints++;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>animateScore('computer');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>showMessage("Computer bekommt einen Punkt!");</p>
+<p class="p1"><span class="Apple-converted-space">        </span>playerTurn = false;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>response = "Ähm... was meinst du damit?";</p>
+<p class="p1"><span class="Apple-converted-space">        </span>showMessage(`&lt;em&gt;Computer antwortet falsch:&lt;/em&gt; ${response}`);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>showMessage("Falsche Antwort! Du bekommst einen Punkt.");</p>
+<p class="p1"><span class="Apple-converted-space">        </span>playerPoints++;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>animateScore('player');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>playerTurn = true;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p1"><span class="Apple-converted-space">      </span>updateStatus();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (!checkWin()) setTimeout(nextRound, 1500);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function computerInsults() {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>currentInsultIndex = Math.floor(Math.random() * insults.length);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const insult = insults[currentInsultIndex][0];</p>
+<p class="p1"><span class="Apple-converted-space">      </span>showMessage(`&lt;em&gt;Computer sagt:&lt;/em&gt; ${insult}`);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>showMessage("Wähle eine Antwort:");</p>
+<p class="p1"><span class="Apple-converted-space">      </span>showResponseOptions();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function showResponseOptions() {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>buttons.className = "response-mode";</p>
+<p class="p1"><span class="Apple-converted-space">      </span>buttons.innerHTML = "";</p>
+<p class="p1"><span class="Apple-converted-space">      </span>awaitingPlayerResponse = true;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>insults.forEach((pair, index) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const btn = document.createElement("button");</p>
+<p class="p1"><span class="Apple-converted-space">        </span>btn.textContent = pair[1];</p>
+<p class="p1"><span class="Apple-converted-space">        </span>btn.onclick = () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">          </span>showMessage(`&lt;strong&gt;Du antwortest:&lt;/strong&gt; ${pair[1]}`);</p>
+<p class="p1"><span class="Apple-converted-space">          </span>if (index === currentInsultIndex) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>showMessage("Du konterst erfolgreich!");</p>
+<p class="p1"><span class="Apple-converted-space">            </span>playerPoints++;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>animateScore('player');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>playerTurn = true;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>showMessage("Falsche Antwort!");</p>
+<p class="p1"><span class="Apple-converted-space">            </span>computerPoints++;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>animateScore('computer');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>playerTurn = false;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>}</p>
+<p class="p1"><span class="Apple-converted-space">          </span>awaitingPlayerResponse = false;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>updateStatus();</p>
+<p class="p1"><span class="Apple-converted-space">          </span>if (!checkWin()) setTimeout(nextRound, 1500);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>};</p>
+<p class="p1"><span class="Apple-converted-space">        </span>buttons.appendChild(btn);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>});</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function showInsultOptions() {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (awaitingPlayerResponse) return;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>buttons.className = "insult-mode";</p>
+<p class="p1"><span class="Apple-converted-space">      </span>buttons.innerHTML = "";</p>
+<p class="p1"><span class="Apple-converted-space">      </span>insults.forEach((pair, index) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const btn = document.createElement("button");</p>
+<p class="p1"><span class="Apple-converted-space">        </span>btn.textContent = pair[0];</p>
+<p class="p1"><span class="Apple-converted-space">        </span>btn.onclick = () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">          </span>currentInsultIndex = index;</p>
+<p class="p1"><span class="Apple-converted-space">          </span>showMessage(`&lt;strong&gt;Du sagst:&lt;/strong&gt; ${pair[0]}`);</p>
+<p class="p1"><span class="Apple-converted-space">          </span>setTimeout(() =&gt; computerResponds(), 1000);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>};</p>
+<p class="p1"><span class="Apple-converted-space">        </span>buttons.appendChild(btn);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>});</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>updateStatus();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>showMessage("Du beginnst. Wähle eine Beleidigung:");</p>
+<p class="p1"><span class="Apple-converted-space">    </span>showInsultOptions();</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/script&gt;</p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
+</body>
+</html>
